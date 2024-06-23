@@ -1,0 +1,25 @@
+<.simple_form :let={f} for={@changeset} action={@action} enctype="multipart/form-data">
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:price]} type="number" label="Price" step="any" placeholder="¥ 1000" />
+  <.input field={f[:currency]} type="text" label="Currency" placeholder="JPY" />
+  <.input
+    field={f[:balance_id]}
+    type="select"
+    options={Enum.map(@balances, fn balance -> {:"#{balance.name}", balance.id} end)}
+    label="Account"
+  />
+  <.input
+    field={f[:category_id]}
+    type="select"
+    options={Enum.map(@categories, fn category -> {:"#{category.name}", category.id} end)}
+    label="Category"
+  />
+  <.input field={f[:date]} type="datetime-local" label="Date" />
+  <.input field={f[:notes]} type="text" label="Notes" />
+  <.input field={f[:receipt_image_url]} type="file" label="Receipt Image" />
+  <:actions>
+    <.button>Save Expense</.button>
+  </:actions>
+</.simple_form>

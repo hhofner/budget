@@ -1,0 +1,21 @@
+<.header>
+  Expense <%= @expense.id %>
+  <:subtitle>This is a expense record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/expenses/#{@expense}/edit"}>
+      <.button>Edit expense</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Price"><%= @expense.price %></:item>
+  <:item title="Currency"><%= @expense.currency %></:item>
+  <:item title="Account"><%= @expense.balance_id %></:item>
+  <:item title="Category"><%= @expense.category_id %></:item>
+  <:item title="Date"><%= @expense.date %></:item>
+  <:item title="Notes"><%= @expense.notes %></:item>
+  <:item title="Receipt image url"><%= @expense.receipt_image_url %></:item>
+</.list>
+
+<.back navigate={~p"/expenses"}>Back to expenses</.back>

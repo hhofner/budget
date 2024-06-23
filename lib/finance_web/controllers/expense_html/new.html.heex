@@ -1,0 +1,51 @@
+<.header class="mb-4">
+  New Expense
+  <:subtitle>Create a new expense record.</:subtitle>
+</.header>
+
+<div class="w-full overflow-scroll p-2">
+  <div class="stats shadow">
+    <div class="stat">
+      <div class="stat-title">Used This Month</div>
+      <div class="stat-value">¥89,400</div>
+      <div class="stat-desc">21% more than last month</div>
+    </div>
+    <%= for balance <- @balances do %>
+      <div class="stat">
+        <div class="stat-figure text-secondary-content"></div>
+        <div class="stat-title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            class="inline-block"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-credit-card"
+          >
+            <rect width="20" height="14" x="2" y="5" rx="2" /><line
+              x1="2"
+              x2="22"
+              y1="10"
+              y2="10"
+            />
+          </svg>
+          <%= balance.name %>
+        </div>
+        <div class="stat-value text-secondary-content">¥<%= balance.balance %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<.expense_form
+  changeset={@changeset}
+  action={~p"/expenses"}
+  categories={@categories}
+  balances={@balances}
+/>
+
+<.back navigate={~p"/expenses"}>Back to expenses</.back>

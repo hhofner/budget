@@ -1,0 +1,8 @@
+<.header>
+  Edit Balance <%= @balance.id %>
+  <:subtitle>Use this form to manage balance records in your database.</:subtitle>
+</.header>
+
+<.balance_form changeset={@changeset} action={~p"/balances/#{@balance}"} />
+
+<.back navigate={~p"/balances"}>Back to balances</.back>

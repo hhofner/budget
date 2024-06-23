@@ -1,0 +1,16 @@
+<.header>
+  Balance <%= @balance.id %>
+  <:subtitle>This is a balance record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/balances/#{@balance}/edit"}>
+      <.button>Edit balance</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @balance.name %></:item>
+  <:item title="Balance"><%= @balance.balance %></:item>
+</.list>
+
+<.back navigate={~p"/balances"}>Back to balances</.back>
